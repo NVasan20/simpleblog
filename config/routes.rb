@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
-	resources :articles, only: :index
+root 'articles#index', as: 'home'
+
+	resources :articles do
+
+		get :recent, on: :collection
+	end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
