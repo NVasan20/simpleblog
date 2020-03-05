@@ -8,4 +8,21 @@
 
 <%= link_to('edit', edit_article_path(params[:id]))%>
 
+<h2>
+	comments
+</h2>
 
+<ul><% @article.comments.each do | comment | %>
+	<li>
+	<%= comment.body%>
+	</li>
+<%end%>
+</ul>
+
+
+<%= form_for [@article, Comment.new] do |f| %>
+  <%= f.label :body%>
+  <%= f.text_field :body%>
+
+  <%= f.submit%>
+<%end%>
